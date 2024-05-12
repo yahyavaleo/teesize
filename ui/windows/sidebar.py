@@ -1,0 +1,312 @@
+import os
+from PyQt5 import QtCore, QtGui, QtWidgets
+
+
+class Sidebar(QtWidgets.QWidget):
+    def __init__(self, parent):
+        super().__init__(parent)
+        self.setObjectName("Sidebar")
+
+        JetBrainsMonoMedium = self.loadFont(os.path.join("ui", "fonts", "JetBrainsMono-Medium.ttf"))
+        JetBrainsMonoBold = self.loadFont(os.path.join("ui", "fonts", "JetBrainsMono-Bold.ttf"))
+
+        self.setStyleSheet("QWidget {\n" "    background-color: #efefef;\n" "}")
+        self.verticalLayout_3 = QtWidgets.QVBoxLayout(self)
+        self.verticalLayout_3.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout_3.setSpacing(0)
+        self.verticalLayout_3.setObjectName("verticalLayout_3")
+        self.centralwidget = QtWidgets.QWidget(self)
+        self.centralwidget.setStyleSheet("QWidget {\n" "    border: 2px solid black;\n" "}")
+        self.centralwidget.setObjectName("centralwidget")
+        self.verticalLayout = QtWidgets.QVBoxLayout(self.centralwidget)
+        self.verticalLayout.setContentsMargins(2, 2, 2, 2)
+        self.verticalLayout.setSpacing(0)
+        self.verticalLayout.setObjectName("verticalLayout")
+        self.header = QtWidgets.QWidget(self.centralwidget)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.header.sizePolicy().hasHeightForWidth())
+        self.header.setSizePolicy(sizePolicy)
+        self.header.setMinimumSize(QtCore.QSize(0, 60))
+        self.header.setStyleSheet("QWidget {\n" "    border: none;\n" "    border-bottom: 2px solid black;\n" "}")
+        self.header.setObjectName("header")
+        self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.header)
+        self.verticalLayout_2.setContentsMargins(25, 0, 0, 0)
+        self.verticalLayout_2.setSpacing(0)
+        self.verticalLayout_2.setObjectName("verticalLayout_2")
+        self.settings_title = QtWidgets.QLabel(self.header)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.settings_title.sizePolicy().hasHeightForWidth())
+        self.settings_title.setSizePolicy(sizePolicy)
+        self.settings_title.setMinimumSize(QtCore.QSize(200, 45))
+        font = QtGui.QFont(JetBrainsMonoBold)
+        font.setPointSize(15)
+        font.setBold(True)
+        font.setWeight(75)
+        self.settings_title.setFont(font)
+        self.settings_title.setStyleSheet("QLabel {\n" "    border: none;\n" "}")
+        self.settings_title.setAlignment(QtCore.Qt.AlignLeading | QtCore.Qt.AlignLeft | QtCore.Qt.AlignVCenter)
+        self.settings_title.setObjectName("settings_title")
+        self.verticalLayout_2.addWidget(self.settings_title)
+        self.verticalLayout.addWidget(self.header)
+        spacerItem = QtWidgets.QSpacerItem(20, 50, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
+        self.verticalLayout.addItem(spacerItem)
+        self.trueheight_layout = QtWidgets.QHBoxLayout()
+        self.trueheight_layout.setContentsMargins(25, -1, 25, -1)
+        self.trueheight_layout.setSpacing(15)
+        self.trueheight_layout.setObjectName("trueheight_layout")
+        self.trueheight_opt = QtWidgets.QLabel(self.centralwidget)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.trueheight_opt.sizePolicy().hasHeightForWidth())
+        self.trueheight_opt.setSizePolicy(sizePolicy)
+        self.trueheight_opt.setMinimumSize(QtCore.QSize(200, 45))
+        font = QtGui.QFont(JetBrainsMonoMedium)
+        font.setPointSize(11)
+        font.setWeight(55)
+        self.trueheight_opt.setFont(font)
+        self.trueheight_opt.setStyleSheet("QLabel {\n" "    border: none;\n" "}")
+        self.trueheight_opt.setAlignment(QtCore.Qt.AlignLeading | QtCore.Qt.AlignLeft | QtCore.Qt.AlignVCenter)
+        self.trueheight_opt.setObjectName("trueheight_opt")
+        self.trueheight_layout.addWidget(self.trueheight_opt)
+        self.trueheight_field = QtWidgets.QLineEdit(self.centralwidget)
+        self.trueheight_field.setMinimumSize(QtCore.QSize(0, 30))
+        font = QtGui.QFont(JetBrainsMonoMedium)
+        font.setPointSize(11)
+        font.setWeight(55)
+        self.trueheight_field.setFont(font)
+        self.trueheight_field.setStyleSheet(
+            "QLineEdit {\n" "    background-color: white;\n" "    padding-left: 10px;\n" "}"
+        )
+        self.trueheight_field.setObjectName("trueheight_field")
+        self.trueheight_layout.addWidget(self.trueheight_field)
+        self.trueheight_unit = QtWidgets.QLabel(self.centralwidget)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.trueheight_unit.sizePolicy().hasHeightForWidth())
+        self.trueheight_unit.setSizePolicy(sizePolicy)
+        self.trueheight_unit.setMinimumSize(QtCore.QSize(0, 45))
+        self.trueheight_unit.setMaximumSize(QtCore.QSize(45, 16777215))
+        font = QtGui.QFont(JetBrainsMonoMedium)
+        font.setPointSize(11)
+        font.setWeight(55)
+        self.trueheight_unit.setFont(font)
+        self.trueheight_unit.setStyleSheet("QLabel {\n" "    border: none;\n" "}")
+        self.trueheight_unit.setAlignment(QtCore.Qt.AlignLeading | QtCore.Qt.AlignLeft | QtCore.Qt.AlignVCenter)
+        self.trueheight_unit.setObjectName("trueheight_unit")
+        self.trueheight_layout.addWidget(self.trueheight_unit)
+        self.verticalLayout.addLayout(self.trueheight_layout)
+        self.truewidth_layout = QtWidgets.QHBoxLayout()
+        self.truewidth_layout.setContentsMargins(25, -1, 25, -1)
+        self.truewidth_layout.setSpacing(15)
+        self.truewidth_layout.setObjectName("truewidth_layout")
+        self.truewidth_opt = QtWidgets.QLabel(self.centralwidget)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.truewidth_opt.sizePolicy().hasHeightForWidth())
+        self.truewidth_opt.setSizePolicy(sizePolicy)
+        self.truewidth_opt.setMinimumSize(QtCore.QSize(200, 45))
+        font = QtGui.QFont(JetBrainsMonoMedium)
+        font.setPointSize(11)
+        font.setWeight(55)
+        self.truewidth_opt.setFont(font)
+        self.truewidth_opt.setStyleSheet("QLabel {\n" "    border: none;\n" "}")
+        self.truewidth_opt.setAlignment(QtCore.Qt.AlignLeading | QtCore.Qt.AlignLeft | QtCore.Qt.AlignVCenter)
+        self.truewidth_opt.setObjectName("truewidth_opt")
+        self.truewidth_layout.addWidget(self.truewidth_opt)
+        self.truewidth_field = QtWidgets.QLineEdit(self.centralwidget)
+        self.truewidth_field.setMinimumSize(QtCore.QSize(0, 30))
+        font = QtGui.QFont(JetBrainsMonoMedium)
+        font.setPointSize(11)
+        font.setWeight(55)
+        self.truewidth_field.setFont(font)
+        self.truewidth_field.setStyleSheet(
+            "QLineEdit {\n" "    background-color: white;\n" "    padding-left: 10px;\n" "}"
+        )
+        self.truewidth_field.setObjectName("truewidth_field")
+        self.truewidth_layout.addWidget(self.truewidth_field)
+        self.truewidth_unit = QtWidgets.QLabel(self.centralwidget)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.truewidth_unit.sizePolicy().hasHeightForWidth())
+        self.truewidth_unit.setSizePolicy(sizePolicy)
+        self.truewidth_unit.setMinimumSize(QtCore.QSize(0, 45))
+        self.truewidth_unit.setMaximumSize(QtCore.QSize(45, 16777215))
+        font = QtGui.QFont(JetBrainsMonoMedium)
+        font.setPointSize(11)
+        font.setWeight(55)
+        self.truewidth_unit.setFont(font)
+        self.truewidth_unit.setStyleSheet("QLabel {\n" "    border: none;\n" "}")
+        self.truewidth_unit.setAlignment(QtCore.Qt.AlignLeading | QtCore.Qt.AlignLeft | QtCore.Qt.AlignVCenter)
+        self.truewidth_unit.setObjectName("truewidth_unit")
+        self.truewidth_layout.addWidget(self.truewidth_unit)
+        self.verticalLayout.addLayout(self.truewidth_layout)
+        self.pixeltoinch_layout = QtWidgets.QHBoxLayout()
+        self.pixeltoinch_layout.setContentsMargins(25, -1, 25, -1)
+        self.pixeltoinch_layout.setSpacing(15)
+        self.pixeltoinch_layout.setObjectName("pixeltoinch_layout")
+        self.pixeltoinch_opt = QtWidgets.QLabel(self.centralwidget)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.pixeltoinch_opt.sizePolicy().hasHeightForWidth())
+        self.pixeltoinch_opt.setSizePolicy(sizePolicy)
+        self.pixeltoinch_opt.setMinimumSize(QtCore.QSize(200, 45))
+        font = QtGui.QFont(JetBrainsMonoMedium)
+        font.setPointSize(11)
+        font.setWeight(55)
+        self.pixeltoinch_opt.setFont(font)
+        self.pixeltoinch_opt.setStyleSheet("QLabel {\n" "    border: none;\n" "}")
+        self.pixeltoinch_opt.setAlignment(QtCore.Qt.AlignLeading | QtCore.Qt.AlignLeft | QtCore.Qt.AlignVCenter)
+        self.pixeltoinch_opt.setObjectName("pixeltoinch_opt")
+        self.pixeltoinch_layout.addWidget(self.pixeltoinch_opt)
+        self.pixeltoinch_field = QtWidgets.QLineEdit(self.centralwidget)
+        self.pixeltoinch_field.setMinimumSize(QtCore.QSize(0, 30))
+        font = QtGui.QFont(JetBrainsMonoMedium)
+        font.setPointSize(11)
+        font.setWeight(55)
+        self.pixeltoinch_field.setFont(font)
+        self.pixeltoinch_field.setStyleSheet(
+            "QLineEdit {\n" "    background-color: white;\n" "    padding-left: 10px;\n" "}"
+        )
+        self.pixeltoinch_field.setObjectName("pixeltoinch_field")
+        self.pixeltoinch_layout.addWidget(self.pixeltoinch_field)
+        self.pixeltoinch_unit = QtWidgets.QLabel(self.centralwidget)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.pixeltoinch_unit.sizePolicy().hasHeightForWidth())
+        self.pixeltoinch_unit.setSizePolicy(sizePolicy)
+        self.pixeltoinch_unit.setMinimumSize(QtCore.QSize(0, 45))
+        self.pixeltoinch_unit.setMaximumSize(QtCore.QSize(45, 16777215))
+        font = QtGui.QFont(JetBrainsMonoMedium)
+        font.setPointSize(11)
+        font.setWeight(55)
+        self.pixeltoinch_unit.setFont(font)
+        self.pixeltoinch_unit.setStyleSheet("QLabel {\n" "    border: none;\n" "}")
+        self.pixeltoinch_unit.setAlignment(QtCore.Qt.AlignLeading | QtCore.Qt.AlignLeft | QtCore.Qt.AlignVCenter)
+        self.pixeltoinch_unit.setObjectName("pixeltoinch_unit")
+        self.pixeltoinch_layout.addWidget(self.pixeltoinch_unit)
+        self.verticalLayout.addLayout(self.pixeltoinch_layout)
+        spacerItem1 = QtWidgets.QSpacerItem(20, 50, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
+        self.verticalLayout.addItem(spacerItem1)
+        self.bcontainer = QtWidgets.QWidget(self.centralwidget)
+        self.bcontainer.setMinimumSize(QtCore.QSize(0, 0))
+        self.bcontainer.setStyleSheet("QWidget {\n" "    border: none;\n" "}")
+        self.bcontainer.setObjectName("bcontainer")
+        self.horizontalLayout_4 = QtWidgets.QHBoxLayout(self.bcontainer)
+        self.horizontalLayout_4.setContentsMargins(25, 0, 25, 0)
+        self.horizontalLayout_4.setSpacing(0)
+        self.horizontalLayout_4.setObjectName("horizontalLayout_4")
+        self.save_btn = QtWidgets.QPushButton(self.bcontainer)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.save_btn.sizePolicy().hasHeightForWidth())
+        self.save_btn.setSizePolicy(sizePolicy)
+        self.save_btn.setMinimumSize(QtCore.QSize(150, 40))
+        self.save_btn.setFocusPolicy(QtCore.Qt.NoFocus)
+        font = QtGui.QFont(JetBrainsMonoBold)
+        font.setPointSize(11)
+        font.setBold(True)
+        font.setWeight(75)
+        self.save_btn.setFont(font)
+        self.save_btn.setStyleSheet(
+            "QPushButton{\n"
+            "    color: black;\n"
+            "    background-color: #f3f5fc;\n"
+            "    padding: 8px;\n"
+            "    border: 2px solid black;\n"
+            "}\n"
+            "\n"
+            "QPushButton:hover{\n"
+            "    background-color: #c3c5cc; \n"
+            "}\n"
+            "\n"
+            "QPushButton:pressed{\n"
+            "    background-color: #a388ee;\n"
+            "}"
+        )
+        self.save_btn.setFlat(True)
+        self.save_btn.setObjectName("save_btn")
+        self.horizontalLayout_4.addWidget(self.save_btn)
+        spacerItem2 = QtWidgets.QSpacerItem(
+            40, 20, QtWidgets.QSizePolicy.MinimumExpanding, QtWidgets.QSizePolicy.Minimum
+        )
+        self.horizontalLayout_4.addItem(spacerItem2)
+        self.reset_btn = QtWidgets.QPushButton(self.bcontainer)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.reset_btn.sizePolicy().hasHeightForWidth())
+        self.reset_btn.setSizePolicy(sizePolicy)
+        self.reset_btn.setMinimumSize(QtCore.QSize(150, 40))
+        self.reset_btn.setFocusPolicy(QtCore.Qt.NoFocus)
+        font = QtGui.QFont(JetBrainsMonoBold)
+        font.setPointSize(11)
+        font.setBold(True)
+        font.setWeight(75)
+        self.reset_btn.setFont(font)
+        self.reset_btn.setStyleSheet(
+            "QPushButton{\n"
+            "    color: black;\n"
+            "    background-color: #f3f5fc;\n"
+            "    padding: 8px;\n"
+            "    border: 2px solid black;\n"
+            "}\n"
+            "\n"
+            "QPushButton:hover{\n"
+            "    background-color: #c3c5cc; \n"
+            "}\n"
+            "\n"
+            "QPushButton:pressed{\n"
+            "    background-color: #ff6b6b;\n"
+            "}"
+        )
+        self.reset_btn.setFlat(True)
+        self.reset_btn.setObjectName("reset_btn")
+        self.horizontalLayout_4.addWidget(self.reset_btn)
+        self.verticalLayout.addWidget(self.bcontainer)
+        spacerItem3 = QtWidgets.QSpacerItem(20, 395, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        self.verticalLayout.addItem(spacerItem3)
+        self.verticalLayout_3.addWidget(self.centralwidget)
+
+        self.retranslateUi()
+        QtCore.QMetaObject.connectSlotsByName(self)
+
+    def loadFont(self, fontPath):
+        fontDB = QtGui.QFontDatabase()
+        fontID = fontDB.addApplicationFont(fontPath)
+        if fontID == -1:
+            return None
+        fontFamilies = fontDB.applicationFontFamilies(fontID)
+        if fontFamilies is None:
+            return None
+        return fontFamilies[0]
+
+    def retranslateUi(self):
+        _translate = QtCore.QCoreApplication.translate
+        self.setWindowTitle(_translate("Sidebar", "Form"))
+        self.settings_title.setText(_translate("Sidebar", "Settings"))
+
+        self.trueheight_opt.setText(_translate("Sidebar", "True Height"))
+        self.truewidth_opt.setText(_translate("Sidebar", "True Width"))
+        self.pixeltoinch_opt.setText(_translate("Sidebar", "Pixel-To-Inch Ratio"))
+
+        self.trueheight_field.setText(_translate("Sidebar", "40"))
+        self.truewidth_field.setText(_translate("Sidebar", "40"))
+        self.pixeltoinch_field.setText(_translate("Sidebar", "64"))
+
+        self.trueheight_unit.setText(_translate("Sidebar", "inch"))
+        self.truewidth_unit.setText(_translate("Sidebar", "inch"))
+        self.pixeltoinch_unit.setText(_translate("Sidebar", "px/in"))
+
+        self.save_btn.setText(_translate("Sidebar", "Save"))
+        self.reset_btn.setText(_translate("Sidebar", "Reset"))

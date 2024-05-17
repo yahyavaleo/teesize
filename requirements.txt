@@ -1,0 +1,13 @@
+imgaug==0.4.0
+matplotlib==3.8.0
+numpy==1.26.4
+opencv_python_headless==4.8.0.74
+Pillow==10.3.0
+prettytable==3.10.0
+PyQt5==5.15.10
+PyQt5_sip==12.13.0
+segmentation_models_pytorch==0.3.3
+skimage==0.22.0
+torch==2.2.1
+torchsummary==1.5.1
+tqdm==4.65.0

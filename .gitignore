@@ -13,6 +13,7 @@ data/shirts/
 lib/checkpoints/
 lib/debug/
 lib/res/
+ui/assets/cache.png
 
 # Ignore VSCode IDE settings
 .vscode/

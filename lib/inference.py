@@ -70,7 +70,7 @@ def load_model(checkpoint_file):
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
     model = Unet().to(device)
-    checkpoint = torch.load(checkpoint_file, map_location=device)
+    checkpoint = torch.load(checkpoint_file, map_location=device, weights_only=True)
     model.load_state_dict(checkpoint["state_dict"], strict=True)
     model.eval()
 

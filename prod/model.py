@@ -1,0 +1,38 @@
+import warnings
+from torch.jit import TracerWarning
+
+import torch
+import torch.nn as nn
+import segmentation_models_pytorch as smp
+
+
+class Unet(nn.Module):
+    def __init__(self):
+        super().__init__()
+        self.unet = smp.Unet(
+            encoder_name="resnet50",
+            encoder_weights="imagenet",
+            decoder_channels=[256, 128, 64, 32, 32],
+            in_channels=1,
+            classes=25,
+        )
+
+    def forward(self, x):
+        return self.unet(x)
+
+
+if __name__ == "__main__":
+    warnings.filterwarnings("ignore", category=TracerWarning)
+
+    model = Unet()
+    checkpoint = torch.load("weights/epoch_50.pth", map_location="cpu", weights_only=True)
+    model.load_state_dict(checkpoint["state_dict"], strict=True)
+    example_input = torch.rand(4, 1, 256, 256)
+
+    try:
+        traced_model = torch.jit.trace(model, example_input)
+        traced_model.save("resnet.pt")
+
+        print("Traced model saved!")
+    except Exception:
+        print("There was error trying to convert the model to Torch Script!")

@@ -22,6 +22,7 @@ class Unet(nn.Module):
 
 
 if __name__ == "__main__":
+    warnings.filterwarnings("ignore", category=UserWarning)
     warnings.filterwarnings("ignore", category=TracerWarning)
 
     model = Unet()
@@ -35,4 +36,13 @@ if __name__ == "__main__":
 
         print("Traced model saved!")
     except Exception:
-        print("There was error trying to convert the model to Torch Script!")
+        print("There was an error trying to convert the model to Torch Script!")
+
+    try:
+        onnx_model = torch.onnx.export(
+            model, (example_input), "resnet.onnx", input_names=["input"], output_names=["output"]
+        )
+
+        print("ONNX export successful!")
+    except Exception:
+        print("There was an error trying to export the model to ONNX format!")

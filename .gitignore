@@ -17,6 +17,7 @@ prod/libtorch
 prod/build/
 prod/weights/
 prod/resnet.pt
+prod/resnet.onnx
 prod/teesize
 ui/assets/cache.png
 

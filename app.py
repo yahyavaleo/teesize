@@ -54,6 +54,11 @@ class TeeSize(Window):
         image, landmarks, inference_time = predict(savepath, self.model)
         print(f"[*] Inference time: {inference_time * 1000:.3f} ms")
 
+        with open(f"debug/{image_basename}_landmarks.csv", mode="w", newline="") as f:
+            writer = csv.writer(f)
+            writer.writerow(["x", "y"])
+            writer.writerows(landmarks)
+
         savepath = os.path.join("debug", f"{image_basename}_landmarks.png")
         draw_landmarks(image, landmarks, savepath)
         print(f"[*] Predicted landmarks saved as: {savepath}")
@@ -141,6 +146,7 @@ if __name__ == "__main__":
             import os
             import sys
             import cv2
+            import csv
 
             from lib.inference import predict, load_model
             from lib.image import perspective_correction, measure, draw_measurements

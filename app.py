@@ -1,4 +1,5 @@
 import argparse
+import warnings
 from timeit import default_timer as timer
 from ui.windows.window import Window, get_app, wait
 
@@ -134,6 +135,8 @@ if __name__ == "__main__":
         help="Threshold to use for calculating the percentage of correct keypoints (PCK)",
     )
     args = parser.parse_args()
+
+    warnings.filterwarnings("ignore", category=FutureWarning)
 
     if args.mode == "gui":
         checkpoint_file = args.checkpoint

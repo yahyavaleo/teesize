@@ -22,6 +22,7 @@ class Unet(nn.Module):
 
 
 if __name__ == "__main__":
+    warnings.filterwarnings("ignore", category=FutureWarning)
     warnings.filterwarnings("ignore", category=UserWarning)
     warnings.filterwarnings("ignore", category=TracerWarning)
 

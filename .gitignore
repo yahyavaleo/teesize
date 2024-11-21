@@ -13,6 +13,11 @@ data/shirts/
 lib/checkpoints/
 lib/debug/
 lib/res/
+prod/libtorch
+prod/build/
+prod/weights/
+prod/resnet.pt
+prod/teesize
 ui/assets/cache.png
 
 # Ignore VSCode IDE settings

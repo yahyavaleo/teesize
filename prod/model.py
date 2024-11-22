@@ -1,4 +1,5 @@
 import warnings
+import torch.ao.quantization
 from torch.jit import TracerWarning
 
 import torch
@@ -30,6 +31,23 @@ if __name__ == "__main__":
     checkpoint = torch.load("weights/epoch_50.pth", map_location="cpu", weights_only=True)
     model.load_state_dict(checkpoint["state_dict"], strict=True)
     example_input = torch.rand(4, 1, 256, 256)
+
+    # ---------------------------------
+    # Post-Training Static Quantization
+    # ---------------------------------
+    # model.eval()
+    # model.qconfig = torch.quantization.get_default_qconfig("fbgemm")
+    # quantized_model = torch.quantization.prepare(model.unet)
+    #
+    # with torch.no_grad():
+    #     model(example_input)
+    #
+    # quantized_model = torch.quantization.convert(model.unet)
+
+    # ----------------------------------
+    # Post-Training Dynamic Quantization
+    # ----------------------------------
+    # quantized_model = torch.quantization.quantize_dynamic(model, qconfig_spec={torch.nn.Conv2d}, dtype=torch.qint8)
 
     try:
         traced_model = torch.jit.trace(model, example_input)

@@ -14,7 +14,7 @@ private:
   torch::Device device;
 
   cv::Mat warp(const cv::Mat &image, const std::vector<cv::Point2f> &distorted_points,
-              float true_width, float true_height, float pixeltoinch)
+               float true_width, float true_height, float pixeltoinch)
   {
     float scaled_width = true_width * pixeltoinch;
     float scaled_height = true_height * pixeltoinch;
@@ -194,13 +194,30 @@ public:
   }
 };
 
-int main()
+int main(int argc, char *argv[])
 {
+  if (argc < 2)
+  {
+    std::cerr << "Usage: " << argv[0] << " <image>" << std::endl;
+    return 1;
+  }
+
   try
   {
-    const std::string input_path = "assets/shirt.png";
-    const std::string output_path = "assets/corrected.png";
+    const std::string input_path = argv[1];
     const std::string model_path = "resnet.pt";
+
+    std::string output_path;
+    size_t dot_idx = input_path.find_last_of('.');
+
+    if (dot_idx != std::string::npos)
+    {
+      output_path = input_path.substr(0, dot_idx) + "_processed" + input_path.substr(dot_idx);
+    }
+    else
+    {
+      output_path = input_path + "_processed";
+    }
 
     LandmarkDetector detector(model_path);
 
@@ -211,7 +228,7 @@ int main()
 
     auto end = std::chrono::high_resolution_clock::now();
     auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start);
-    
+
     std::cout << "Inference time: " << duration.count() << " ms" << std::endl;
     std::cout << "Landmarks:" << std::endl;
 

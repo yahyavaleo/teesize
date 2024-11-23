@@ -13,7 +13,8 @@ data/shirts/
 lib/checkpoints/
 lib/debug/
 lib/res/
-prod/libtorch
+prod/libtorch/
+prod/debug/
 prod/build/
 prod/weights/
 prod/resnet.pt
